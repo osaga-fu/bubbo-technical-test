@@ -3,7 +3,7 @@ const { addBook } = require("../controllers/bookController");
 
 const router = express.Router();
 
-router.post("/book", addBook);
+router.post("/books", addBook);
 
 module.exports = {
     routes: router
