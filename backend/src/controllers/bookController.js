@@ -39,7 +39,23 @@ const getAllBooks = async (req, res, next) => {
   }
 };
 
+const getBookById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const book = await firestore.collection("books").doc(id);
+    const data = await book.get();
+    if (!data.exists) {
+      res.status(404).send("Book with given id not found");
+    }else {
+        res.send(data.data())
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
   addBook,
   getAllBooks,
+  getBookById,
 };
