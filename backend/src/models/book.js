@@ -7,3 +7,5 @@ class Book {
         this.photo_url=photo_url;
     }
 }
+
+module.exports = Book;
